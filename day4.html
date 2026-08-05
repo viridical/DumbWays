@@ -1,0 +1,54 @@
+<!-- day4.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Nilai Siswa</title>
+    <link rel="stylesheet" href="day4.css" />
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📋 Daftar Nilai Siswa</h1>
+            <p class="subtitle">S1D4 - HOF &amp; Callback</p>
+        </header>
+
+        <div class="search-section">
+            <label for="searchInput">🔍 Cari berdasarkan Nama</label>
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Ketik nama siswa..."
+                autocomplete="off"
+            />
+            <span id="resultCount" class="result-count"></span>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Siswa</th>
+                        <th>Kelas</th>
+                        <th>Nilai (Score)</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTableBody"></tbody>
+            </table>
+        </div>
+
+        <div class="average-section">
+            <span class="average-label">📊 Rata-rata Nilai</span>
+            <span class="average-value" id="averageDisplay">0</span>
+        </div>
+
+        <footer class="footer">
+            <p>Dibuat dengan <span class="heart">❤</span> untuk tugas S1D4</p>
+        </footer>
+    </div>
+
+    <script src="day4.js"></script>
+</body>
+</html>
