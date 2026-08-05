@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guest Book</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <div class="logo">Guest <span>Book</span></div>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#">About Us</a>
+            </div>
+        </header>
+
+        <!-- ===== LEAVE MESSAGE ===== -->
+        <section>
+            <h2 class="section-title">Leave Message</h2>
+
+            <form id="guestForm" autocomplete="off">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                        required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea
+                        id="message"
+                        placeholder="Write your message here"
+                        required
+                    ></textarea>
+                </div>
+                <div class="form-group" style="flex: 0 0 auto; min-width: unset;">
+                    <label style="opacity: 0; pointer-events: none;">.</label>
+                    <button type="submit" class="btn-submit">Submit Message</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <hr />
+
+    <!-- ===== NEW MESSAGES ===== -->
+    <section>
+        <h2 class="section-title">
+            New Messages
+            <span class="badge" id="countBadge">0</span>
+        </h2>
+
+        <ul class="messages-list" id="messagesList">
+            <li class="empty-message">No messages yet. Be the first!</li>
+        </ul>
+    </section>
+
+    <!-- =====CONNECT WITH US=====-->
+    <div class="social-section">
+        <h3 class="section-title">Connect with Us</h3>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/tembuskerja/" target="_blank">LinkedIn</a>
+            <a href="https://twitter.com/tembuskerja" target="_blank">Twitter</a>
+            <a href="https://www.instagram.com/tembuskerja/" target="_blank">Instagram</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== JAVASCRIPT (tetap di dalam HTML) ===== -->
+<script>
+    (function() {
+        'use strict';
+
+        // ----- DOM refs -----
+        const form = document.getElementById('guestForm');
+        const nameInput = document.getElementById('fullName');
+        const messageInput = document.getElementById('message');
+        const messagesList = document.getElementById('messagesList');
+        const countBadge = document.getElementById('countBadge');
+
+        // ----- initial data  -----
+        const initialMessages = [
+            { name: 'Teddy', text: 'Hello' },
+            { name: 'Bahlul', text: 'Keren!' },
+            { name: 'Nina', text: 'WOW!' },
+            { name: 'Budi', text: 'Awesome!' },
+        ];
+
+        // ----- helper: render all messages -----
+        function renderMessages() {
+            messagesList.innerHTML = '';
+
+            let stored = localStorage.getItem('guestbook_messages');
+            let messages;
+
+            if (stored) {
+                try {
+                    messages = JSON.parse(stored);
+                    if (!Array.isArray(messages)) messages = [];
+                } catch (_) {
+                    messages = [];
+                }
+            } else {
+                messages = initialMessages.slice();
+                localStorage.setItem('guestbook_messages', JSON.stringify(messages));
+            }
+
+            if (messages.length === 0) {
+                const li = document.createElement('li');
+                li.className = 'empty-message';
+                li.textContent = 'No messages yet. Be the first!';
+                messagesList.appendChild(li);
+                countBadge.textContent = '0';
+                return;
+            }
+
+            for (let i = 0; i < messages.length; i++) {
+                const msg = messages[i];
+                const li = document.createElement('li');
+                li.className = 'message-item';
+
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'message-name';
+                nameSpan.textContent = msg.name || 'Anonymous';
+
+                const dot = document.createElement('span');
+                dot.className = 'divider-dot';
+                dot.textContent = '·';
+
+                const textSpan = document.createElement('span');
+                textSpan.className = 'message-text';
+                textSpan.textContent = msg.text || '';
+
+                li.appendChild(nameSpan);
+                li.appendChild(dot);
+                li.appendChild(textSpan);
+
+                messagesList.appendChild(li);
+            }
+
+            countBadge.textContent = messages.length;
+        }
+
+        function saveMessages(messages) {
+            localStorage.setItem('guestbook_messages', JSON.stringify(messages));
+        }
+
+        function getMessages() {
+            const stored = localStorage.getItem('guestbook_messages');
+            if (stored) {
+                try {
+                    const parsed = JSON.parse(stored);
+                    if (Array.isArray(parsed)) return parsed;
+                } catch (_) { /* ignore */ }
+            }
+            return [];
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+
+            const name = nameInput.value.trim();
+            const msg = messageInput.value.trim();
+
+            if (!name || !msg) {
+                if (!name) nameInput.focus();
+                else if (!msg) messageInput.focus();
+                return;
+            }
+
+            const messages = getMessages();
+            messages.push({ name, text: msg });
+            saveMessages(messages);
+            renderMessages();
+
+            nameInput.value = '';
+            messageInput.value = '';
+            nameInput.focus();
+        }
+
+        form.addEventListener('submit', handleSubmit);
+        renderMessages();
+
+        console.log('✅ Guest Book ready — add your messages!');
+    })();
+</script>
+
+</body>
+</html>
