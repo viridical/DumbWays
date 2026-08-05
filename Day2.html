@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guest Book - Day 2</title>
+    <link rel="stylesheet" href="day2.css" />
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">Guest <span>Book</span></div>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#">About Us</a>
+            </div>
+        </header>
+        <section>
+            <h2 class="section-title">Leave Message</h2>
+            <form id="guestForm" autocomplete="off">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Write your message here" required></textarea>
+                    </div>
+                    <div class="form-group submit-group">
+                        <label aria-hidden="true">.</label>
+                        <button type="submit" class="btn-submit">Submit Message</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <hr />
+        <section>
+            <h2 class="section-title">
+                New Messages
+                <span class="badge" id="countBadge">0</span>
+            </h2>
+            <ul class="messages-list" id="messagesList">
+                <li class="empty-message">No messages yet. Be the first!</li>
+            </ul>
+        </section>
+        <div class="social-section">
+            <h3 class="section-title">Connect with Us</h3>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/tembuskerja/" target="_blank">LinkedIn</a>
+                <a href="https://twitter.com/tembuskerja/" target="_blank">Twitter</a>
+                <a href="https://www.instagram.com/tembuskerja/" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </div>
+    <script src="day2.js"></script>
+</body>
+</html>
