@@ -1,5 +1,10 @@
-// day4.js
-const students = [
+interface StudentType {
+    name: string;
+    class: string;
+    score: number;
+}
+
+const students: StudentType[] = [
     { name: 'Andi Saputra', class: 'Full Stack A', score: 85 },
     { name: 'Budi Santoso', class: 'Full Stack A', score: 78 },
     { name: 'Citra Lestari', class: 'Full Stack B', score: 92 },
@@ -12,12 +17,13 @@ const students = [
     { name: 'Joko Susilo', class: 'Backend Core', score: 82 }
 ];
 
-const tbody = document.getElementById('studentTableBody');
-const searchInput = document.getElementById('searchInput');
-const averageDisplay = document.getElementById('averageDisplay');
-const resultCount = document.getElementById('resultCount');
+const tbody = document.getElementById('studentTableBody') as HTMLTableSectionElement | null;
+const searchInput = document.getElementById('searchInput') as HTMLInputElement | null;
+const averageDisplay = document.getElementById('averageDisplay') as HTMLElement | null;
+const resultCount = document.getElementById('resultCount') as HTMLElement | null;
 
-function renderTable(data) {
+function renderTable(data: StudentType[]): void {
+    if (!tbody) return;
     tbody.innerHTML = data.map((student, index) => {
         return `<tr>
             <td>${index + 1}</td>
@@ -27,22 +33,31 @@ function renderTable(data) {
         </tr>`;
     }).join('');
 
-    const total = data.reduce((sum, s) => sum + s.score, 0);
-    const avg = data.length ? (total / data.length) : 0;
-    averageDisplay.textContent = avg.toFixed(1);
+    const total = data.reduce((sum: number, s: StudentType) => sum + s.score, 0);
+    const avg = data.length ? total / data.length : 0;
 
-    resultCount.textContent = data.length === students.length ? '' : `${data.length} siswa ditemukan`;
+    if (averageDisplay) {
+        averageDisplay.textContent = avg.toFixed(1);
+    }
+
+    if (resultCount) {
+        resultCount.textContent = data.length === students.length ? '' : `${data.length} siswa ditemukan`;
+    }
 }
 
-function filterStudents(keyword) {
-    const filtered = students.filter(s => 
+function filterStudents(keyword: string): void {
+    const filtered = students.filter((s: StudentType) =>
         s.name.toLowerCase().includes(keyword.toLowerCase())
     );
     renderTable(filtered);
 }
 
-searchInput.addEventListener('input', function() {
-    filterStudents(this.value);
-});
+if (searchInput) {
+    searchInput.addEventListener('input', function(this: HTMLInputElement) {
+        filterStudents(this.value);
+    });
+}
 
 renderTable(students);
+
+export{}
