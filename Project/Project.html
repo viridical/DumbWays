@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Viridical Iveniar</title>
+    <meta name="description" content="Portfolio pribadi Viridical Iveniar - Web Developer & Content Creator" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>" />
+
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Project.css" />
+</head>
+<body>
+
+    <!-- LOADING -->
+    <div id="loader" class="loader-wrapper">
+        <div class="loader-spinner"></div>
+        <p class="loader-text mt-3">Memuat Portfolio...</p>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top glass-nav" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <span class="brand-logo">&lt;/&gt;</span> Portfolio
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <div class="ms-lg-3 d-flex align-items-center">
+                    <button id="themeToggle" class="btn theme-toggle-btn" aria-label="Toggle tema">
+                        <i class="bi bi-moon-fill" id="themeIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME -->
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-avatar-wrapper mx-auto mx-lg-0">
+                        <img src="ac9cbce0-e5ab-420c-9f65-791bf7c455d4.jpeg" alt="Foto Profil" class="hero-avatar" loading="lazy" />
+                        <div class="avatar-ring"></div>
+                    </div>
+                    <h1 class="hero-name mt-4">Viridical Iveniar S. D</h1>
+                    <div class="hero-typing-wrapper">
+                        <span class="hero-prefix">Saya </span>
+                        <span id="typedText" class="hero-typed"></span>
+                        <span class="cursor-blink">|</span>
+                    </div>
+                    <p class="hero-desc mt-3">
+                        Web developer kreatif dan content creator. Suka membangun solusi digital yang estetik dan fungsional.
+                    </p>
+                    <div class="hero-buttons mt-4 d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#projects" class="btn btn-primary btn-ripple">View Projects</a>
+                        <a href="#contact" class="btn btn-outline-light btn-ripple">Contact Me</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="hero-illustration">
+                        <div class="floating-shapes">
+                            <span class="shape shape-1"></span>
+                            <span class="shape shape-2"></span>
+                            <span class="shape shape-3"></span>
+                            <span class="shape shape-4"></span>
+                        </div>
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                                <span class="code-title">portfolio.ts</span>
+                            </div>
+                            <div class="code-body">
+                                <pre><span class="code-keyword">const</span> <span class="code-var">developer</span> = {<br>  <span class="code-prop">name</span>: <span class="code-string">"Viridical Iveniar"</span>,<br>  <span class="code-prop">role</span>: <span class="code-string">"Web Developer & Content Creator"</span>,<br>  <span class="code-prop">passion</span>: <span class="code-string">"Design & Code"</span><br>};<br><br><span class="code-keyword">function</span> <span class="code-fn">build</span>() {<br>  <span class="code-keyword">return</span> <span class="code-string">"✨ Let's create something amazing!"</span>;<br>}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-gradient-bg"></div>
+        <canvas id="particleCanvas" class="particle-canvas"></canvas>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about-section py-5">
+        <div class="container py-5">
+            <div class="section-header text-center" data-aos="fade-up">
+                <span class="section-tag">Tentang Saya</span>
+                <h2 class="section-title">Kenali Lebih Dekat</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="row gy-5 mt-4">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
+                    <div class="about-card glass-card p-4 p-md-5">
+                        <h3 class="about-heading">Cerita Singkat</h3>
+                        <p class="about-text">
+                            Saya Viridical Iveniar, seorang pengembang web dan kreator konten yang bersemangat.
+                            Dengan latar belakang pendidikan SMA, saya terus belajar dan mengasah kemampuan di bidang
+                            teknologi dan desain. Saya percaya bahwa kombinasi antara kode yang bersih dan estetika visual
+                            dapat menciptakan pengalaman digital yang berkesan.
+                        </p>
+                        <p class="about-text">
+                            Saat ini saya fokus pada pengembangan website modern, desain UI/UX, dan juga aktif membagikan
+                            perjalanan saya di media sosial.
+                        </p>
+                        <div class="about-info-grid mt-4">
+                            <div class="info-item"><span class="info-label">Nama</span><span class="info-value">Viridical Iveniar S. D</span></div>
+                            <div class="info-item"><span class="info-label">Umur</span><span class="info-value">19 Tahun</span></div>
+                            <div class="info-item"><span class="info-label">Lokasi</span><span class="info-value">Indonesia</span></div>
+                            <div class="info-item"><span class="info-label">Pendidikan</span><span class="info-value">SMA</span></div>
+                            <div class="info-item"><span class="info-label">Email</span><span class="info-value">viridicald@gmail.com</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+                    <!-- Skill Progress Bar -->
+                    <div class="skill-wrapper glass-card p-4 p-md-5">
+                        <h3 class="about-heading mb-4">Keahlian</h3>
+                        <div class="skill-item">
+                            <span class="skill-name">HTML / CSS</span>
+                            <div class="progress skill-progress">
+                                <div class="progress-bar" style="width: 85%;" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript / TypeScript</span>
+                            <div class="progress skill-progress">
+                                <div class="progress-bar" style="width: 70%;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">React / Vue</span>
+                            <div class="progress skill-progress">
+                                <div class="progress-bar" style="width: 60%;" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Bootstrap / Tailwind</span>
+                            <div class="progress skill-progress">
+                                <div class="progress-bar" style="width: 75%;" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Content Creation</span>
+                            <div class="progress skill-progress">
+                                <div class="progress-bar" style="width: 80%;" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Counter -->
+                    <div class="counter-wrapper glass-card p-4 p-md-5 mt-4 d-flex justify-content-around">
+                        <div class="counter-item text-center">
+                            <span class="counter-number" data-target="4">0</span>
+                            <p class="counter-label">Proyek</p>
+                        </div>
+                        <div class="counter-item text-center">
+                            <span class="counter-number" data-target="0">0</span>
+                            <p class="counter-label">Klien</p>
+                        </div>
+                        <div class="counter-item text-center">
+                            <span class="counter-number" data-target="0">0</span>
+                            <p class="counter-label">Penghargaan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="projects-section py-5">
+        <div class="container py-5">
+            <div class="section-header text-center" data-aos="fade-up">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Proyek Terbaru</h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons d-flex flex-wrap justify-content-center gap-2 my-4" data-aos="fade-up" data-aos-delay="100">
+                <button class="btn btn-filter active" data-filter="all">Semua</button>
+                <button class="btn btn-filter" data-filter="web">Web</button>
+                <button class="btn btn-filter" data-filter="mobile">Mobile</button>
+                <button class="btn btn-filter" data-filter="design">Desain</button>
+            </div>
+
+            <!-- Project Grid -->
+            <div class="row g-4" id="projectGrid">
+                <!-- card akan diisi oleh JS dari Project.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container py-5">
+            <div class="section-header text-center" data-aos="fade-up">
+                <span class="section-tag">Hubungi</span>
+                <h2 class="section-title">Mari Bekerja Sama</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="row gy-5 mt-4">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
+                    <div class="contact-info glass-card p-4 p-md-5">
+                        <h4 class="contact-heading">Informasi Kontak</h4>
+                        <div class="contact-detail">
+                            <i class="bi bi-envelope-fill"></i>
+                            <span>viridicald@gmail.com</span>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>Indonesia</span>
+                        </div>
+                        <div class="social-icons mt-4">
+                            <a href="https://instagram.com/vlinrsvtdrn__" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://tiktok.com/@trixhies" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                            <a href="https://github.com/viridical" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/viridical" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="mailto:viridicald@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+                    <form id="contactForm" class="glass-card p-4 p-md-5">
+                        <div class="mb-3">
+                            <label for="nameInput" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="nameInput" placeholder="Nama lengkap" required />
+                            <div class="invalid-feedback">Nama harus diisi</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailInput" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailInput" placeholder="email@example.com" required />
+                            <div class="invalid-feedback">Email tidak valid</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="messageInput" class="form-label">Pesan</label>
+                            <textarea class="form-control" id="messageInput" rows="4" placeholder="Tulis pesan..." required></textarea>
+                            <div class="invalid-feedback">Pesan tidak boleh kosong</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-ripple w-100">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-section py-4">
+        <div class="container text-center">
+            <div class="footer-socials mb-3">
+                <a href="https://instagram.com/vlinrsvtdrn__" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@trixhies" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://github.com/viridical" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/viridical" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:viridicald@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="mb-0">&copy; 2026 Viridical Iveniar. Dibangun dengan <i class="fas fa-heart text-danger"></i></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script src="Project.js"></script>
+    <script src="Valid.js"></script>
+</body>
+</html>
